@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
-//@Ignore("Can only run it when the server is up, or else tests will fail.")
+@Ignore("Can only run it when the server is up, or else tests will fail.")
 public class RestClientUtilTest {
 
 	@Test
