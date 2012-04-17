@@ -109,11 +109,13 @@ public class ServletUtilsTest {
 					return null;
 				}
 				
+				@SuppressWarnings("rawtypes")
 				public Enumeration getParameterNames() {
 					// TODO Auto-generated method stub
 					return null;
 				}
 				
+				@SuppressWarnings("rawtypes")
 				public Map getParameterMap() {
 					// TODO Auto-generated method stub
 					return null;
@@ -124,6 +126,7 @@ public class ServletUtilsTest {
 					return null;
 				}
 				
+				@SuppressWarnings("rawtypes")
 				public Enumeration getLocales() {
 					// TODO Auto-generated method stub
 					return null;
@@ -169,6 +172,7 @@ public class ServletUtilsTest {
 					return null;
 				}
 				
+				@SuppressWarnings("rawtypes")
 				public Enumeration getAttributeNames() {
 					// TODO Auto-generated method stub
 					return null;
@@ -268,11 +272,13 @@ public class ServletUtilsTest {
 					return 0;
 				}
 				
+				@SuppressWarnings("rawtypes")
 				public Enumeration getHeaders(String arg0) {
 					// TODO Auto-generated method stub
 					return null;
 				}
 				
+				@SuppressWarnings("rawtypes")
 				public Enumeration getHeaderNames() {
 					// TODO Auto-generated method stub
 					return null;

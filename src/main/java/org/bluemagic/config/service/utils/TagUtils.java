@@ -8,6 +8,7 @@ public final class TagUtils {
 
     // Private Constructor so that it can't be instantiated.
     private TagUtils() {
+    	throw new AssertionError();
     }
 
     public static String reorder(String unorderedTags) {

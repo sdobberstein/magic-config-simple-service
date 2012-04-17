@@ -61,10 +61,10 @@ public class PropertyController {
 		// Get the base property from the URI.
 		String baseProperty = ServletUtils.getProperty(request, "/property/");
 		
-		// Get that tags if there are any.
+		// Get the tags if there are any.
 		String orderedTags = getTagParameters(request);
 		
-		// Start building the full Property URI by adding on the tags.
+		// Start building the full Property URI.
 		StringBuilder property = new StringBuilder(baseProperty);
 		
 		// Append the tags if there are any.

@@ -8,13 +8,16 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
 public class RestClientUtil {
 
-	private RestClientUtil() {}
+	private RestClientUtil() {
+		throw new AssertionError();
+	}
 	
 	public static String get(URI uri) {
 		HttpClient client = new DefaultHttpClient();
@@ -36,7 +39,7 @@ public class RestClientUtil {
 		return null;
 	}
 	
-	public static String post(URI uri, String json) {
+	public static int post(URI uri, String json) {
 		HttpClient client = new DefaultHttpClient();
 		HttpPost post = new HttpPost(uri);
 		
@@ -47,24 +50,39 @@ public class RestClientUtil {
 			
 			HttpResponse response = client.execute(post);
 			System.out.println(response.getStatusLine().getStatusCode() + " (" + response.getStatusLine().getReasonPhrase() + ")");
+			return response.getStatusLine().getStatusCode();
 		} catch (Throwable t) {
 			throw new RuntimeException(t.getMessage(), t);
 		}
-		
-		return null;
 	}
 	
-	public static String delete(URI uri) {
+	public static int delete(URI uri) {
 		HttpClient client = new DefaultHttpClient();
 		HttpDelete delete = new HttpDelete(uri);
 		
 		try {
 			HttpResponse response = client.execute(delete);
 			System.out.println(response.getStatusLine().getStatusCode() + " (" + response.getStatusLine().getReasonPhrase() + ")");
+			return response.getStatusLine().getStatusCode();
 		} catch (Throwable t) {
 			throw new RuntimeException(t.getMessage(), t);
 		}
+	}
+	
+	public static int put(URI uri, String json) {
+		HttpClient client = new DefaultHttpClient();
+		HttpPut put = new HttpPut(uri);
 		
-		return null;
+		try {
+			StringEntity entity = new StringEntity(json);
+			entity.setContentType("application/json");
+			put.setEntity(entity);
+			
+			HttpResponse response = client.execute(put);
+			System.out.println(response.getStatusLine().getStatusCode() + " (" + response.getStatusLine().getReasonPhrase() + ")");
+			return response.getStatusLine().getStatusCode();
+		} catch (Throwable t) {
+			throw new RuntimeException(t.getMessage(), t);
+		}
 	}
 }
